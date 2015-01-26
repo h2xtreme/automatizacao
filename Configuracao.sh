@@ -19,7 +19,7 @@ hostname $NOME
 echo > /etc/udev/rules.d/70-persistent-net.rules
 start_udev
 
-HWADDRNOVO=`ifconfig -a  | grep eth | awk {'print$5'}`
+HWADDRNOVO=`ifconfig -a  | grep -m 1 eth | awk {'print$5'}`
 
 network="NETWORKING=yes\n
 HOSTNAME=$NOME\n
