@@ -45,6 +45,26 @@ echo > /etc/udev/rules.d/70-persistent-net.rules
 start_udev
 /etc/init.d/network restart
 
+#Instalacao JAVA
+
+echo "Qual a versao de JAVA a instalar? (1.6 ou 1.7)"
+read JAVA;
+
+case "$JAVA" in
+	1.6)
+		yum install env-java1.6.noarch
+		yum install jdk-sun.noarch
+		;;
+	1.7)
+		yum install env-java1.7.noarch
+		yum install jdk-sun.noarch
+		;;
+	*)
+		echo "So pode ser instalada a versao 1.6 ou 1.7 do JAVA. Instalacao abortada!"
+		exit
+		;;
+esac
+
 #Configuracao JBOSS
 function jboss {
 
